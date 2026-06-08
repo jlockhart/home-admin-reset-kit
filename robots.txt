@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jlockhart.github.io/home-admin-reset-kit/sitemap.xml
