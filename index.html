@@ -51,64 +51,18 @@
   </div>
 
   <h2>Leave trial feedback</h2>
-  <p>This page now uses a durable GitHub issue intake instead of a temporary tunnel. Feedback is public, so keep it general and do not include private details.</p>
+  <p>The public trial now uses a no-login email feedback path. Please keep feedback general and do not include private documents or sensitive details.</p>
 
-  <form id="feedback-form" name="home-admin-reset-kit-early-access" action="https://github.com/jlockhart/home-admin-reset-kit/issues/new" method="get">
-    <input type="hidden" name="labels" value="intake,trial-feedback">
-    <input type="hidden" name="title" value="Home Admin Reset Kit trial feedback">
-    <input type="hidden" id="issue-body" name="body" value="">
-    <div>
-      <label for="paperwork_pain">What paperwork or home-admin task is currently most annoying, messy, or hard to find? *</label>
-      <textarea id="paperwork_pain" name="paperwork_pain" required autocomplete="off"></textarea>
-    </div>
-    <div>
-      <label for="person_type">Which best describes you? *</label>
-      <select id="person_type" name="person_type" required>
-        <option value="">Choose one</option>
-        <option>Homeowner</option>
-        <option>Renter</option>
-        <option>Sole trader / contractor</option>
-        <option>Family admin person</option>
-        <option>Helping parents or another household</option>
-        <option>Other</option>
-      </select>
-    </div>
-    <div>
-      <label for="most_useful">What would be most useful to you? *</label>
-      <select id="most_useful" name="most_useful" required>
-        <option value="">Choose one</option>
-        <option>A simple folder/spreadsheet/checklist template kit</option>
-        <option>A guided setup call</option>
-        <option>A done-for-you setup service</option>
-        <option>Not sure yet</option>
-      </select>
-      <p class="hint">No setup call or done-for-you service is currently offered or promised; this answer only helps shape the trial.</p>
-    </div>
-    <div>
-      <label for="scattered_where">Where are your documents mostly scattered today? (optional)</label>
-      <select id="scattered_where" name="scattered_where">
-        <option value="">Choose one</option>
-        <option>Gmail / email attachments</option>
-        <option>Google Drive / Dropbox / OneDrive / iCloud</option>
-        <option>Downloads / laptop folders</option>
-        <option>Phone photos / scans</option>
-        <option>Paper drawers</option>
-        <option>A mix of everything</option>
-      </select>
-    </div>
-    <div>
-      <label for="ai_assistant_use">Would you want to use this kit by yourself, or work through it with your own AI assistant? (optional)</label>
-      <select id="ai_assistant_use" name="ai_assistant_use">
-        <option value="">Choose one</option>
-        <option>By myself</option>
-        <option>With my AI assistant</option>
-        <option>A mix of both</option>
-        <option>Not sure yet</option>
-      </select>
-    </div>
-    <button type="submit">Open feedback issue</button>
-    <p class="hint">GitHub may ask you to sign in before submitting. This is a low-risk durable intake path for the trial, not the final mainstream form.</p>
-  </form>
+  <div class="notice">
+    <strong>Fastest no-login feedback:</strong> send a short email with what was confusing, what was useful, and what you expected to be included.
+  </div>
+  <p><a class="button secondary" href="mailto:pipandjohn+homeadminresetkit@gmail.com?subject=Home%20Admin%20Reset%20Kit%20trial%20feedback&body=What%20paperwork%20or%20home-admin%20task%20is%20currently%20most%20annoying%3F%0A%0AWhich%20best%20describes%20you%3F%20%28homeowner%2C%20renter%2C%20sole%20trader%2C%20family%20admin%2C%20helping%20parents%2C%20other%29%0A%0AWhat%20would%20be%20most%20useful%3F%20%28template%20kit%2C%20guided%20setup%2C%20done-for-you%2C%20not%20sure%29%0A%0AWhere%20are%20your%20documents%20mostly%20scattered%20today%3F%0A%0APlease%20do%20not%20attach%20private%20documents%20or%20include%20account%20numbers%2C%20IDs%2C%20tax%20records%2C%20legal%20papers%2C%20receipts%2C%20or%20financial%20details.">Send trial feedback by email</a></p>
+  <p class="hint">This opens your normal email app and does not require a GitHub account. A proper embedded form or payment/download checkout is still the next conversion upgrade.</p>
+
+  <details>
+    <summary>Technical users: leave public GitHub feedback instead</summary>
+    <p>If you already use GitHub, you can also <a href="https://github.com/jlockhart/home-admin-reset-kit/issues/new?labels=intake,trial-feedback&title=Home%20Admin%20Reset%20Kit%20trial%20feedback">open a public feedback issue</a>. GitHub may require sign-in, and public issues must not include private details.</p>
+  </details>
 
   <p>Need a quick overview first? Read the <a href="home-paperwork-checklist.html">home paperwork checklist</a>.</p>
 
@@ -120,25 +74,4 @@
   </ul>
   <footer>Home Admin Reset Kit is an organisation template. It is not tax, legal, financial, accounting, or compliance advice.</footer>
 </section></main>
-<script>
-document.getElementById('feedback-form').addEventListener('submit', function () {
-  const get = id => (document.getElementById(id).value || '').trim();
-  const body = [
-    '## Home Admin Reset Kit trial feedback',
-    '',
-    '**Paperwork pain / task:**', get('paperwork_pain'),
-    '',
-    '**Person type:**', get('person_type'),
-    '',
-    '**Most useful:**', get('most_useful'),
-    '',
-    '**Where documents are scattered:**', get('scattered_where') || 'Not answered',
-    '',
-    '**AI assistant use:**', get('ai_assistant_use') || 'Not answered',
-    '',
-    '_Please do not add private documents, account numbers, IDs, tax records, legal papers, receipts, or financial details._'
-  ].join('\n');
-  document.getElementById('issue-body').value = body;
-});
-</script>
 </body></html>
