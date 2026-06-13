@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Trial feedback — Home Admin Reset Kit</title>
+  <style>
+    :root { --paper:#f7f3ea; --ink:#18201b; --muted:#59645c; --line:#d9d0bf; --accent:#345c42; --accent2:#2f4f3b; --card:#fffaf0; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { max-width:920px; margin:0 auto; padding:42px 22px 60px; }
+    h1 { font-size:clamp(2.2rem,6vw,4.2rem); line-height:1; margin:.2em 0; letter-spacing:-0.05em; }
+    h2 { margin:0 0 12px; }
+    p,li,a { font-size:1.04rem; line-height:1.55; }
+    a { color:var(--accent2); font-weight:700; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.12em; color:var(--muted); font-size:.82rem; font-weight:800; }
+    .lede { font-size:1.28rem; color:var(--accent2); max-width:720px; }
+    .privacy-note,.card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:18px; box-shadow:0 12px 28px rgba(43,35,21,.06); }
+    .privacy-note { border-color:#c98b6b; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:24px; }
+    .status { color:var(--muted); font-size:.95rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <p><a href="index.html">← Back to trial kit</a></p>
+    <p class="eyebrow">Private build/test page</p>
+    <h1>Trial feedback</h1>
+    <p class="lede">The next milestone is simple: find out whether the free trial kit is clear and useful to someone outside the build process.</p>
+    <p class="privacy-note"><strong>Privacy:</strong> Do not send private documents, IDs, account numbers, tax files, insurance papers, passwords, or screenshots with personal details.</p>
+
+    <section class="grid">
+      <article class="card">
+        <h2>5-minute feedback questions</h2>
+        <ol>
+          <li>What were you trying to get under control?</li>
+          <li>Which part of the trial kit was most useful?</li>
+          <li>Where did you get stuck or feel unsure?</li>
+          <li>What is missing that would make this easier to actually use?</li>
+          <li>If there was a paid full version, what would make it worth paying for?</li>
+        </ol>
+      </article>
+      <article class="card">
+        <h2>Form field names</h2>
+        <p>Use these exact field names when a neutral no-login form endpoint is available:</p>
+        <ul>
+          <li><code>problem_to_control</code></li>
+          <li><code>most_useful_part</code></li>
+          <li><code>stuck_or_unsure</code></li>
+          <li><code>missing_or_harder_than_expected</code></li>
+          <li><code>paid_version_trigger</code></li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Quick scores</h2>
+        <ul>
+          <li><code>clarity_score</code>: 1–5</li>
+          <li><code>usefulness_score</code>: 1–5</li>
+          <li><code>trust_safety_score</code>: 1–5</li>
+          <li><code>recommendation</code>: yes / maybe / no</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Status</h2>
+        <p>This is ready for a neutral no-login form or inbox link. Collection is intentionally paused until the feedback path does not expose John personally.</p>
+        <p>No file uploads. No private documents. No tax, legal, financial, accounting, or compliance advice.</p>
+        <p class="status">Current milestone: 1–3 real pieces of customer feedback on the freebie. Spend: NZD 0.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
