@@ -6,19 +6,24 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Trial feedback — Home Admin Reset Kit</title>
   <style>
-    :root { --paper:#f7f3ea; --ink:#18201b; --muted:#59645c; --line:#d9d0bf; --accent:#345c42; --accent2:#2f4f3b; --card:#fffaf0; }
+    :root { --paper:#f7f3ea; --ink:#18201b; --muted:#59645c; --line:#d9d0bf; --accent:#345c42; --accent2:#2f4f3b; --card:#fffaf0; --warn:#7a4d00; }
     body { margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
     main { max-width:920px; margin:0 auto; padding:42px 22px 60px; }
     h1 { font-size:clamp(2.2rem,6vw,4.2rem); line-height:1; margin:.2em 0; letter-spacing:-0.05em; }
     h2 { margin:0 0 12px; }
-    p,li,a { font-size:1.04rem; line-height:1.55; }
+    p,li,a,label,input,textarea,select,button { font-size:1.04rem; line-height:1.55; }
     a { color:var(--accent2); font-weight:700; }
+    label { display:block; font-weight:800; margin:14px 0 6px; }
+    input,textarea,select { width:100%; box-sizing:border-box; border:1px solid #c8c0af; border-radius:14px; padding:11px 12px; background:#fffdf8; color:var(--ink); }
+    textarea { min-height:96px; resize:vertical; }
+    button { border:0; border-radius:999px; background:var(--accent2); color:white; font-weight:900; padding:13px 20px; cursor:pointer; margin-top:12px; }
     .eyebrow { text-transform:uppercase; letter-spacing:.12em; color:var(--muted); font-size:.82rem; font-weight:800; }
     .lede { font-size:1.28rem; color:var(--accent2); max-width:720px; }
     .privacy-note,.card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:18px; box-shadow:0 12px 28px rgba(43,35,21,.06); }
-    .privacy-note { border-color:#c98b6b; }
+    .privacy-note { border-color:#c98b6b; color:var(--warn); }
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:24px; }
-    .status { color:var(--muted); font-size:.95rem; }
+    .status,.hint { color:var(--muted); font-size:.95rem; }
+    .full { margin-top:24px; }
   </style>
 </head>
 <body>
@@ -27,22 +32,65 @@
     <p class="eyebrow">Private build/test page</p>
     <h1>Trial feedback</h1>
     <p class="lede">The next milestone is simple: find out whether the free trial kit is clear and useful to someone outside the build process.</p>
-    <p class="privacy-note"><strong>Privacy:</strong> Do not send private documents, IDs, account numbers, tax files, insurance papers, passwords, or screenshots with personal details.</p>
+    <p class="privacy-note"><strong>Privacy:</strong> Please do not upload, paste, or send private documents, IDs, account numbers, policy documents, tax files, legal papers, passwords, receipts, or screenshots with personal details. Feedback should only describe the problem in general terms.</p>
+
+    <section class="card full" aria-labelledby="feedback-form-title">
+      <h2 id="feedback-form-title">5-minute feedback form</h2>
+      <p class="status"><strong>Build/test status:</strong> this text-only form is prepared for a neutral Cloudflare Pages Function endpoint at <code>/feedback-submit</code>. It will return a safe “storage not configured” message until a neutral Cloudflare KV binding is live.</p>
+      <form method="post" action="/feedback-submit" data-static-form-name="home-admin-reset-kit-feedback">
+        <label for="problem_to_control">What were you trying to get under control?</label>
+        <textarea id="problem_to_control" name="problem_to_control" required maxlength="1200"></textarea>
+
+        <label for="most_useful_part">Which part of the trial kit was most useful?</label>
+        <textarea id="most_useful_part" name="most_useful_part" required maxlength="1200"></textarea>
+
+        <label for="stuck_or_unsure">Where did you get stuck or feel unsure?</label>
+        <textarea id="stuck_or_unsure" name="stuck_or_unsure" required maxlength="1200"></textarea>
+
+        <label for="missing_or_harder_than_expected">What is missing that would make this easier to actually use?</label>
+        <textarea id="missing_or_harder_than_expected" name="missing_or_harder_than_expected" required maxlength="1200"></textarea>
+
+        <label for="paid_version_trigger">If there was a paid full version, what would make it worth paying for?</label>
+        <textarea id="paid_version_trigger" name="paid_version_trigger" required maxlength="1200"></textarea>
+
+        <div class="grid">
+          <div>
+            <label for="clarity_score">Clarity score</label>
+            <select id="clarity_score" name="clarity_score">
+              <option value="">No score</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+            </select>
+          </div>
+          <div>
+            <label for="usefulness_score">Usefulness score</label>
+            <select id="usefulness_score" name="usefulness_score">
+              <option value="">No score</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+            </select>
+          </div>
+          <div>
+            <label for="trust_safety_score">Trust/safety score</label>
+            <select id="trust_safety_score" name="trust_safety_score">
+              <option value="">No score</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+            </select>
+          </div>
+          <div>
+            <label for="recommendation">Would you recommend it?</label>
+            <select id="recommendation" name="recommendation">
+              <option value="">No answer</option><option value="yes">yes</option><option value="maybe">maybe</option><option value="no">no</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="contact_email_optional">Optional email if you want follow-up</label>
+        <input id="contact_email_optional" name="contact_email_optional" type="email" autocomplete="email">
+
+        <p class="privacy-note"><strong>Do not send private documents.</strong> Before submitting, do not include account numbers, IDs, passwords, tax/legal/insurance papers, receipts, or screenshots. General feedback only.</p>
+        <button type="submit">Send feedback</button>
+      </form>
+    </section>
 
     <section class="grid">
       <article class="card">
-        <h2>5-minute feedback questions</h2>
-        <ol>
-          <li>What were you trying to get under control?</li>
-          <li>Which part of the trial kit was most useful?</li>
-          <li>Where did you get stuck or feel unsure?</li>
-          <li>What is missing that would make this easier to actually use?</li>
-          <li>If there was a paid full version, what would make it worth paying for?</li>
-        </ol>
-      </article>
-      <article class="card">
-        <h2>Form field names</h2>
-        <p>Use these exact field names when a neutral no-login form endpoint is available:</p>
+        <h2>Exact field names</h2>
         <ul>
           <li><code>problem_to_control</code></li>
           <li><code>most_useful_part</code></li>
@@ -52,17 +100,8 @@
         </ul>
       </article>
       <article class="card">
-        <h2>Quick scores</h2>
-        <ul>
-          <li><code>clarity_score</code>: 1–5</li>
-          <li><code>usefulness_score</code>: 1–5</li>
-          <li><code>trust_safety_score</code>: 1–5</li>
-          <li><code>recommendation</code>: yes / maybe / no</li>
-        </ul>
-      </article>
-      <article class="card">
         <h2>Status</h2>
-        <p>This is ready for a neutral no-login form or inbox link. Collection is intentionally paused until the feedback path does not expose John personally.</p>
+        <p>This is ready for a neutral no-login Cloudflare Pages Function + KV binding. Collection is intentionally paused until storage is configured on a final neutral Pages project.</p>
         <p>No file uploads. No private documents. No tax, legal, financial, accounting, or compliance advice.</p>
         <p class="status">Current milestone: 1–3 real pieces of customer feedback on the freebie. Spend: NZD 0.</p>
       </article>
